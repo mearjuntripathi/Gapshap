@@ -6,7 +6,7 @@ const { Server } = require('socket.io');
 
 const path = require('path');
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 
 const app = express();
 
@@ -27,20 +27,6 @@ app.get('/', async (req, res) => {
 
     // Send HTML file or other response to the client
     res.sendFile(__dirname + "/html/index.html");
-    // Get location and OS information using ipinfo.io API
-    try {
-        console.log(clientIP);
-        const response = await axios.get(`http://ipinfo.io/${clientIP}?token=3979fa6394149c`);
-        const { city, region, country, org, ip } = response.data;
-
-        console.log(`User connected from ${clientIP}`);
-        console.log(`Location: ${city}, ${region}, ${country}`);
-        console.log(`Organization: ${org}`);
-        console.log(`IP Address: ${ip}`);
-
-    } catch (error) {
-        console.error(`Error fetching IP information: ${error.message}`);
-    }
 })
 
 app.post('/users', (req, res) => {

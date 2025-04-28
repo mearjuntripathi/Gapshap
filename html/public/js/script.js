@@ -338,8 +338,6 @@ function offTypingIndicator(id){
 function typingIndicator(div){
     let typingIndicator = div.querySelector('.typing-indicator');
     typingIndicator.innerHTML = ''; // Reset the content
-
-    // Simulate typing animation with dots
     const numDots = 3;
     const typingInterval = setInterval(() => {
         const currentDots = typingIndicator.innerHTML;
